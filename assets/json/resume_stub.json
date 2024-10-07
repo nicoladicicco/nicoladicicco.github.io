@@ -1,0 +1,50 @@
+{
+  "basics": {
+    "name": "Nicola Di Cicco",
+    "label": "Final-year PhD student",
+    "image": "",
+    "email": "nicola.dicicco@polimi.it",
+    "phone": "",
+    "url": "https://nicoladicicco.github.io",
+    "summary": "",
+    "location": {
+      "address": "Via Giuseppe Ponzio, 34",
+      "postalCode": "MI 20133",
+      "city": "Milan",
+      "countryCode": "IT",
+      "region": ""
+    }
+  },
+  "education": [
+    {
+      "institution": "Politecnico di Milano",
+      "location": "Milan, Italy",
+      "url": "https://polimi.it",
+      "area": "",
+      "studyType": "PhD in Information Technology - Telecommunications",
+      "startDate": "2021",
+      "endDate": "2024",
+      "score": ""
+    },
+    {
+      "institution": "Alma Mater Studiorum Università di Bologna",
+      "location": "Bologna, Italy",
+      "url": "https://www.unibo.it",
+      "area": "",
+      "studyType": "MSc in Telecommunications Engineering",
+      "startDate": "2019",
+      "endDate": "2021",
+      "score": ""
+    }
+    {
+      "institution": "Alma Mater Studiorum Università di Bologna",
+      "location": "Bologna, Italy",
+      "url": "https://www.unibo.it",
+      "area": "",
+      "studyType": "BSc in Electronics Engineering",
+      "startDate": "2016",
+      "endDate": "2019",
+      "score": ""
+    }
+  ]
+}
