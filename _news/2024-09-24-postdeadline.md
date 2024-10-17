@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper ["First Demonstration of Fine-Tuned LLM for Digital Twin Optical Networks: AI-Agent for Lifecycle Management and Automation"](/assets/pdf/ecoc2024pdp.pdf) was accepted at the post-deadline session of [ECOC 2024](https://www.ecoc2024.org)!
+Our paper ["First Demonstration of Fine-Tuned LLM for Digital Twin Optical Networks: AI-Agent for Lifecycle Management and Automation"](/assets/pdf/sun2024llm.pdf) was accepted at the post-deadline session of [ECOC 2024](https://www.ecoc2024.org)!

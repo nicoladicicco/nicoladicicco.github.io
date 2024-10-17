@@ -11,7 +11,20 @@
   booktitle   = {50th European Conference on Optical Communications (ECOC)},
   year        = {2024},
   abbr        = {ECOC PDP},
-  pdf         = {ecoc2024pdp.pdf}
+  pdf         = {sun2024llm.pdf}
+}
+
+@inproceedings{sticca2024highpower,
+  bibtex_show = {true},
+  author      = {Sticca, Giovanni Simone and Ibrahimi, Memedhe and Di Cicco, Nicola and Musumeci, Francesco and Tornatore, Massimo},
+  title       = {On High-Power Optical Amplification in Hollow Core Fibers for Energy Efficiency and Network Throughput Maximization},
+  booktitle   = {50th European Conference on Optical Communications (ECOC)},
+  year        = {2024},
+  abbr        = {ECOC},
+  abstract    = {We investigate how to optimally set the EDFA output power in Hollow Core Fiber (HCF)
+                 networks. We show that, using high-power amplification, HCF allows 2.4x increase in throughput and
+                 52% decrease in transponders along with a 41% reduction in EDFAs power consumption per Tbps.},
+  pdf         = {sticca2024highpower.pdf}
 }
 
 @inproceedings{dicicco2024llm,
@@ -23,7 +36,7 @@
   year        = {2024},
   abbr        = {ECOC},
   abstract    = {We leverage LLMs to develop a natural-language interface to a software-defined optical network testbed. Results show over 80\% accuracy in translating human intent to the appropriate network configurations. Our code is public.},
-  pdf         = {ecoc2024llm.pdf},
+  pdf         = {dicicco2024llm.pdf},
   code        = {https://github.com/bonsai-lab-polimi/ecoc2024-llm-orchestrator}
 }
 
@@ -38,7 +51,7 @@
   doi         = {10.1109/TNSM.2024.3430052},
   abbr        = {IEEE TNSM},
   abstract    = {We investigate classifying hardware failures in microwave networks via Machine Learning (ML). Although ML-based approaches excel in this task, they usually provide only hard failure predictions without guarantees on their reliability, i.e., on the probability of correct classification. Generally, accumulating data for longer time horizons increases the model's predictive accuracy. Therefore, in real-world applications, a trade-off arises between two contrasting objectives: i) ensuring high reliability for each classified observation, and ii) collecting the minimal amount of data to provide a reliable prediction. To address this problem, we formulate hardware failure-cause identification as an As-Soon-As-Possible (ASAP) selective classification problem where data streams are sequentially provided to an ML classifier, which outputs a prediction as soon as the probability of correct classification exceeds a user-specified threshold. To this end, we leverage Inductive and Cross Venn-Abers Predictors to transform heuristic probability estimates from any ML model into rigorous predictive probabilities. Numerical results on a real-world dataset show that our ASAP framework reduces the time-to-predict by 8x compared to the state-of-the-art, while ensuring a selective classification accuracy greater than 95%. The dataset utilized in this study is publicly available, aiming to facilitate future investigations in failure management for microwave networks.},
-  pdf         = {tnsm2024vap.pdf},
+  pdf         = {dicicco2024vap.pdf},
   code        = {https://github.com/bonsai-lab-polimi/tnsm2024-asap-venn-abers}
 }
 
@@ -54,11 +67,11 @@
   doi         = {10.1109/TNSM.2024.3406934},
   abbr        = {IEEE TNSM},
   abstract    = {We consider the problem of classifying hardware failures in microwave networks given a collection of alarms using Machine Learning (ML). While ML models have been shown to work extremely well on similar tasks, an ML model is, at most, as good as its training data. In microwave networks, building a good-quality dataset is significantly harder than training a good classifier: annotating data is a costly and time-consuming procedure. We, therefore, shift the perspective from a Model-Centric approach, i.e., how to train the best ML model from a given dataset, to a Data-Centric approach, i.e., how to make the best use of the data at our disposal. To this end, we explore two orthogonal Data-Centric approaches for hardware failure identification in microwave networks. At training time, we leverage synthetic data generation with Conditional Variational Autoencoders to cope with extreme data imbalance and ensure fair performance in all failure classes. At inference time, we leverage Batch Uncertainty-based Active Learning to guide the data annotation procedure of multiple concurrent domain-expert labelers and achieve the best possible classification performance with the smallest possible training dataset. Illustrative experimental results on a real-world dataset show that our Data-Centric approaches allow for training top-performing models with 4.5x less annotated data, while improving the classifier's F1-Score by 2.5% in a condition of extreme data scarcity. Finally, for the first time to the best of our knowledge, we make our dataset (curated by microwave industry experts) publicly available, aiming to foster research in data-driven failure management.},
-  pdf         = {tnsm2024data.pdf},
+  pdf         = {dicicco2024datacentric.pdf},
   code        = {https://github.com/bonsai-lab-polimi/tnsm2024-data-centric/tree/main}
 }
 
-@inproceedings{dicicco2023sigcomm,
+@inproceedings{dicicco2023continual,
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Al Sadi, Amir and Grasselli, Chiara and Melis, Andrea and Antichi, Gianni and Tornatore, Massimo},
   title       = {Poster: Continual Network Learning},
@@ -76,7 +89,20 @@
   keywords    = {continual learning, programmable data planes, in-network machine learning, active learning},
   location    = {New York, NY, USA},
   series      = {ACM SIGCOMM},
-  pdf         = {sigcomm2023.pdf}
+  pdf         = {dicicco2023continual.pdf}
+}
+
+@inproceedings{sticca2023cls,
+  bibtex_show = {true},
+  author      = {Sticca, Giovanni Simone and Ibrahimi, Memedhe and Di Cicco, Nicola and Musumeci, Francesco and Tornatore, Massimo},
+  title       = {Throughput Maximization in (C+L+S) Networks with Incremental Deployment of HFAs and 3Rs},
+  booktitle   = {49th European Conference on Optical Communications (ECOC)},
+  year        = {2023},
+  abbr        = {ECOC},
+  abstract    = {We optimize HFA and 3R deployment to avoid lightpath degradation and maximize throughput
+                 in (C+L+S) networks. We show that our proposed strategies can lead up to around 64% fewer HFAs and
+                 20% higher throughput compared to baseline solutions.},
+  pdf         = {sticca2023cls.pdf}
 }
 
 @article{dicicco2023deepls,
@@ -89,12 +115,12 @@
   year        = {2023},
   pages       = {1-1},
   code        = {https://github.com/bonsai-lab-polimi/tnsm2023-deepls},
-  pdf         = {tnsm2023.pdf},
+  pdf         = {dicicco2023deepls.pdf},
   doi         = {10.1109/TNSM.2023.3287433},
   abstract    = {Deep Reinforcement Learning (DRL) is being investigated as a competitive alternative to traditional techniques for solving network optimization problems. A promising research direction lies in enhancing traditional optimization algorithms by offloading low-level decisions to a DRL agent. In this study, we consider how to effectively employ DRL to improve the performance of Local Search algorithms, i.e., algorithms that, starting from a candidate solution, explore the solution space by iteratively applying local changes (i.e., moves), yielding the best solution found in the process. We propose a Local Search algorithm based on lightweight Deep Reinforcement Learning (DeepLS) that, given a neighborhood, queries a DRL agent for choosing a move, with the goal of achieving the best objective value in the long term. Our DRL agent, based on permutation-equivariant neural networks, is composed by less than a hundred parameters, requiring only up to ten minutes of training and can evaluate problem instances of arbitrary size, generalizing to networks and traffic distributions unseen during training. We evaluate DeepLS on two illustrative NP-Hard network routing problems, namely OSPF Weight Setting and Routing and Wavelength Assignment, training on a single small network only and evaluating on instances 2x-10x larger than training. Experimental results show that DeepLS outperforms existing DRL-based approaches from literature and attains competitive results with state-of-the-art metaheuristics, with computing times up to 8x smaller than the strongest algorithmic baselines.}
 }
 
-@inproceedings{dicicco2023netsoft,
+@inproceedings{dicicco2023drlforch,
   abbr        = {IEEE NetSoft},
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Pittalà, Gaetano Francesco and Davoli, Gianluca and Borsatti, Davide and Cerroni, Walter and Raffaelli, Carla and Tornatore, Massimo},
@@ -104,11 +130,11 @@
   pages       = {125-133},
   doi         = {10.1109/NetSoft57336.2023.10175398},
   code        = {https://github.com/bonsai-lab-polimi/netsoft2023-drl-forch},
-  pdf         = {netsoft2023.pdf},
+  pdf         = {dicicco2023drlforch.pdf},
   abstract    = {We consider the problem of designing and training a neural network-based orchestrator for fog computing service deployment. Our goal is to train an orchestrator able to optimize diversified and competing QoS requirements, such as blocking probability and service delay, while potentially supporting thousands of fog nodes. To cope with said challenges, we implement our neural orchestrator as a Deep Set (DS) network operating on sets of fog nodes, and we leverage Deep Reinforcement Learning (DRL) with invalid action masking to find an optimal trade-off between competing objectives. Illustrative numerical results show that our Deep Set-based policy generalizes well to problem sizes (i.e., in terms of numbers of fog nodes) up to two orders of magnitude larger than the ones seen during the training phase, outperforming both greedy heuristics and traditional Multi-Layer Perceptron (MLP)-based DRL. In addition, inference times of our DS-based policy are up to an order of magnitude faster than an MLP, allowing for excellent scalability and near real-time online decision-making.}
 }
 
-@inproceedings{dicicco2023icc,
+@inproceedings{dicicco2023forecasting,
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Talpini, Jacopo and Ibrahimi, Memedhe and Savi, Marco and Tornatore, Massimo},
   title       = {Uncertainty-Aware {QoT} Forecasting in Optical Networks with Bayesian Recurrent Neural Networks},
@@ -118,11 +144,11 @@
   address     = {Rome, Italy},
   days        = {27},
   code        = {https://github.com/bonsai-lab-polimi/icc2023-qot-forecasting},
-  pdf         = {icc2023.pdf},
+  pdf         = {dicicco2023forecasting.pdf},
   abstract    = {We consider the problem of forecasting the Quality-of-Transmission (QoT) of deployed lightpaths in a Wavelength Division Multiplexing (WDM) optical network. QoT forecasting plays a determinant role in network management and planning, as it allows network operators to proactively plan maintenance or detect anomalies in a lightpath. To this end, we leverage Bayesian Recurrent Neural Networks for learning uncertainty-aware probabilistic QoT forecasts, i.e., for modelling a probability distribution of the QoT over a time horizon. We evaluate our proposed approach on the open-source Microsoft Wide Area Network (WAN) optical backbone dataset. Our illustrative numerical results show that our approach not only outperforms state-of-the-art models from literature, but also predicts intervals providing near-optimal empirical coverage. As such, we demonstrate that uncertainty-aware probabilistic modelling enables the application of QoT forecasting in risk-sensitive application scenarios.}
 }
 
-@inproceedings{dicicco2023eucap,
+@inproceedings{dicicco2023los,
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Del Prete, Simone and Kodra, Silvi and Barbiroli, Marina and Fuschini, Franco and Vitucci, Enrico M. and Degli Esposti, Vittorio and Tornatore, Massimo},
   booktitle   = {2023 17th European Conference on Antennas and Propagation (EuCAP)},
@@ -131,11 +157,11 @@
   year        = {2023},
   pages       = {1-5},
   doi         = {10.23919/EuCAP57121.2023.10133145},
-  pdf         = {eucap2023.pdf},
+  pdf         = {dicicco2023los.pdf},
   abstract    = {This paper considers the problem of predicting whether or not a transmitter and a receiver are in Line-of-Sight (LOS) condition. While this problem can be easily solved using a digital urban database and applying ray tracing, we consider the scenario in which only few high-level features descriptive of the propagation environment and of the radio link are available. LOS prediction is modelled as a binary classification Machine Learning problem, and a baseline classifier based on Gradient Boosting Decision Trees (GBDT) is proposed. A synthetic ray-tracing dataset of Manhattan-like topologies is generated for training and testing a GBDT classifier, and its generalization capabilities to both locations and environments unseen at training time are assessed. Results show that the GBDT model achieves good classification performance and provides accurate LOS probability modelling. By estimating feature importance, it can be concluded that the model learned simple decision rules that align with common sense.}
 }
 
-@inproceedings{dicicco2022balkancom,
+@inproceedings{dicicco2022calibrated,
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Ibrahimi, Mëmëdhe and Rottondi, Cristina and Tornatore, Massimo},
   booktitle   = {2022 International Balkan Conference on Communications and Networking (BalkanCom)},
@@ -145,11 +171,11 @@
   pages       = {21-25},
   doi         = {10.1109/BalkanCom55633.2022.9900791},
   code        = {https://github.com/bonsai-lab-polimi/balkancom2022-qot-regression},
-  pdf         = {balkancom2022.pdf},
+  pdf         = {dicicco2022calibrated.pdf},
   abstract    = {Quality-of-Transmission (QoT) regression of unestablished lightpaths is a fundamental problem in Machine Learning applied to optical networks. Even though this problem is well-investigated in current literature, many state-of-the-art approaches either predict point-estimates of the QoT or make simplifying assumptions about the QoT distribution. Because of this, during lightpath deployment, an operator might take either overly-aggressive or overly-conservative decisions due to biased predictions. In this paper, we leverage state-of-the-art Gradient Boosting Decision Tree (GBDT) models and recent advances in uncertainty calibration to perform QoT probabilistic regression for unestablished lightpaths. Calibration of a regression model allows for an accurate modeling of the QoT Cumulative Distribution Function (CDF) without any prior assumption on the QoT distribution. In our illustrative experimental results, we show that our calibrated GBDT model’s predictions provide accurate confidence interval estimates, even when only few samples per lightpath configuration are available at training time.}
 }
 
-@article{dicicco2022jstqe,
+@article{dicicco2022reinforcement,
   bibtex_show = {true},
   selected    = {true},
   author      = {Di Cicco, Nicola and Mercan, Emre Furkan and Karandin, Oleg and Ayoub, Omran and Troia, Sebastian and Musumeci, Francesco and Tornatore, Massimo},
@@ -161,11 +187,11 @@
   number      = {4: Mach. Learn. in Photon. Commun. and Meas. Syst.},
   pages       = {1-12},
   doi         = {10.1109/JSTQE.2022.3151323},
-  pdf         = {jstqe2022.pdf},
+  pdf         = {dicicco2022reinforcement.pdf},
   abstract    = {Deep Reinforcement Learning (DRL) is rising as a promising tool for solving optimization problems in optical networks. Though studies employing DRL for solving static optimization problems in optical networks are appearing, assessing strengths and weaknesses of DRL with respect to state-of-the-art solution methods is still an open research question. In this work, we focus on Routing and Wavelength Assignment (RWA), a well-studied problem for which fast and scalable algorithms leading to better optimality gaps are always sought for. We develop two different DRL-based methods to assess the impact of different design choices on DRL performance. In addition, we propose a Multi-Start approach that can improve the average DRL performance, and we engineer a shaped reward that allows efficient learning in networks with high link capacities. With Multi-Start, DRL gets competitive results with respect to a state-of-the-art Genetic Algorithm with significant savings in computational times. Moreover, we assess the generalization capabilities of DRL to traffic matrices unseen during training, in terms of total connection requests and traffic distribution, showing that DRL can generalize on small to moderate deviations with respect to the training traffic matrices. Finally, we assess DRL scalability with respect to topology size and link capacity.}
 }
 
-@inproceedings{dicicco2021drcn,
+@inproceedings{dicicco2021scalable,
   bibtex_show = {true},
   author      = {Di Cicco, Nicola and Cacchiani, Valentina and Raffaelli, Carla},
   booktitle   = {2021 17th International Conference on the Design of Reliable Communication Networks (DRCN)},
@@ -174,11 +200,11 @@
   year        = {2021},
   pages       = {1-6},
   doi         = {10.1109/DRCN51631.2021.9477394},
-  pdf         = {drcn2021.pdf},
+  pdf         = {dicicco2021scalable.pdf},
   abstract    = {In the evolving scenario of 5G end-to-end networks, optical transport networks provide the connectivity between the mobile edge and the mobile core network. According to the functional decoupling of the base station into the Remote Radio Unit (RRU) and the Baseband Unit (BBU), the latter can be virtualized into a cloud computing platform to access the mobile core. As a consequence, BBU virtual network functions related to different RRUs can be centralized and replicated in a subset of the nodes of the transport network with the aim of optimized reliable design.In this paper a scalable methodology, based on lexicographic optimization, is proposed for the solution of a multi-objective optimization problem to achieve, among other goals, the minimization of the number of active nodes in the transport network while supporting reliability and meeting latency constraints. The proposed solution method is compared to an aggregate optimization approach, showing that the former is capable of proving the optimality of the most relevant components of the multi-objective function (minimization of the number of active nodes and of the number of hops) for instances of medium size, and finds better solutions for instances with a larger number of nodes, namely several tens. The computing times to find an optimal solution for the most relevant objectives are much shorter than those required to solve the aggregate model, even for networks of several tens of nodes.}
 }
 
-@inproceedings{quran2022ondm,
+@inproceedings{quran2022xgspon,
   bibtex_show = {true},
   author      = {Quran, Abdullah and Troia, Sebastian and Ayoub, Omran and Di Cicco, Nicola and Tornatore, Massimo},
   booktitle   = {2022 International Conference on Optical Network Design and Modeling (ONDM)},
@@ -187,10 +213,10 @@
   year        = {2022},
   pages       = {1-3},
   abstract    = {Time-division-multiplexing passive optical networks ({TDM}-{PONs}), with their massive deployment worldwide, are considered a fundamental technology for supporting not only traditional Internet broadband services, but also for new emerging 5G latency-sensitive services, such as Ultra-Reliable and Low Latency Communications (URLLC). Traditional dynamic bandwidth allocation (DBA) mechanisms, currently used to allocate network resources in {TDM}-{PONs}, are not suited to meet the requirements of these new services with strict latency requirements, as they use a polling mechanism which can result in a high queuing delay and ultimately violate URLLC latency requirements. In this work, we propose a new predictive-based DBA mechanism for Gigabit Symmetrical PON {(XGS-PON)} that allows to reduce the latency to fulfill requirements of emerging latency-sensitive services. Our solution employs reinforcement learning (RL) to predict the ingress buffer occupancy of {ONU}s in the next {DBA} cycle. Results show that the proposed {RL} method outperforms traditional DBA approaches in terms of upstream delay while maintaining similar frame loss ratio.},
-  pdf         = {ondm2022.pdf}
+  pdf         = {quran2022xgspon.pdf}
 }
 
-@article{ayoub22comnet,
+@article{ayoub22explainable,
   bibtex_show = {true},
   abbr        = {ComNet},
   title       = {Explainable Artificial Intelligence in communication networks: A use case for failure identification in microwave networks},
@@ -203,11 +229,11 @@
   url         = {https://www.sciencedirect.com/science/article/pii/S138912862200500X},
   author      = {Omran Ayoub and Nicola {Di Cicco} and Fatima Ezzeddine and Federica Bruschetta and Roberto Rubino and Massimo Nardecchia and Michele Milano and Francesco Musumeci and Claudio Passera and Massimo Tornatore},
   keywords    = {Explainable artificial intelligence, Machine learning, Automated network management},
-  pdf         = {comnet2022omran.pdf},
+  pdf         = {ayoub2022explainable.pdf},
   abstract    = {Artificial Intelligence (AI) has demonstrated superhuman capabilities in solving a significant number of tasks, leading to widespread industrial adoption. For in-field network-management application, AI-based solutions, however, have often risen skepticism among practitioners as their internal reasoning is not exposed and their decisions cannot be easily explained, preventing humans from trusting and even understanding them. To address this shortcoming, a new area in AI, called Explainable AI (XAI), is attracting the attention of both academic and industrial researchers. XAI is concerned with explaining and interpreting the internal reasoning and the outcome of AI-based models to achieve more trustable and practical deployment. In this work, we investigate the application of XAI for network management, focusing on the problem of automated failure-cause identification in microwave networks. We first introduce the concept of XAI, highlighting its advantages in the context of network management, and we discuss in detail the concept behind Shapley Additive Explanations (SHAP), the XAI framework considered in our analysis. Then, we propose a framework for a XAI-assisted ML-based automated failure-cause identification in microwave networks, spanning model’s development and deployment phases. For the development phase, we show how to exploit SHAP for feature selection and how to leverage SHAP to inspect misclassified instances during model’s development process, and how to describe model’s global behavior based on SHAP’s global explanations. For the deployment phase, we propose a framework based on predictions uncertainty to detect possibly wrong predictions that will be inspected through XAI.}
 }
 
-@article{dicicco2022comnet,
+@article{dicicco2022migrations,
   bibtex_show = {true},
   title       = {Optimization over time of reliable 5G-RAN with network function migrations},
   journal     = {Computer Networks},
@@ -220,6 +246,6 @@
   url         = {https://www.sciencedirect.com/science/article/pii/S1389128622002985},
   author      = {Nicola {Di Cicco} and Federico Tonini and Valentina Cacchiani and Carla Raffaelli},
   keywords    = {Reliable 5G-RAN, Lexicographic optimization, Network function migrations},
-  pdf         = {comnet2022carla.pdf},
+  pdf         = {dicicco2022migrations.pdf},
   abstract    = {Resource optimization in 5G Radio Access Networks (5G-RAN) has to face the dynamics over time in networks with increasing numbers of nodes and virtual network functions. In this context, multiple objectives need to be jointly optimized, and key application requirements such as latency must be enforced. In addition, virtual network functions realizing baseband processing are subject to failures of the cloud infrastructure, requiring an additional level of reliability. Overall, this is a complex problem to solve, requiring fast algorithms to cope with dynamic networks while avoiding resource overprovisioning. This paper considers the problem of optimal virtual function placement in 5G-RAN with reliability against a single DU Hotel failure and proposes a solution that takes service dynamics into account. Firstly, the joint optimization of the total number of DU Hotels, of the RU–DU latency and of the backup DU sharing in a static traffic scenario is considered, and the DUOpt algorithm, based on Lexicographic Optimization, is proposed for solving efficiently this multi-objective problem. DUOpt splits the multi-objective problem into smaller Integer Linear Programming (ILP) subproblems that are sequentially solved, adopting for each one the most effective methodology to reduce the total execution time. The proposed DUOpt algorithm is extensively benchmarked to show its effectiveness in optimization of medium to large size networks: in particular, it is shown to greatly outperform an aggregate multi-objective approach, being able to compute optimal or close to optimal solutions for networks of several tens of nodes in computing times of a few seconds. Then, the problem is extended to a dynamic traffic scenario in which optimization is performed over time. In this context, in addition to the aforementioned objectives, the total number of network function migrations induced by multiple reoptimizations must be kept to the minimum. For solving efficiently this problem the DUMig algorithm is proposed, which extends and improves DUOpt. Reoptimization over a time horizon of one day in an illustrative dynamic traffic scenario is performed to evaluate the proposed DUMig algorithm against DUOpt, the latter being oblivious of the traffic dynamics. DUMig shows remarkable savings in the total number of migrations (above 86.1\% for primary virtual functions and 83\% for backup virtual functions) compared to DUOpt, while preserving near-optimal resource assignment.}
 }
