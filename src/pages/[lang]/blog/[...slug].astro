@@ -1,0 +1,58 @@
+---
+import { render } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Layout from '../../../layouts/Layout.astro';
+import { LOCALES, formatDate, toLang, type Lang } from '../../../utils/i18n';
+import { getPosts, type Post } from '../../../utils/blog';
+
+export async function getStaticPaths() {
+	const posts = await getPosts();
+	const translations = Map.groupBy(posts, (entry) => entry.slug);
+
+	return posts.map(({ post, lang, slug }) => ({
+		params: { lang, slug },
+		props: { post, available: translations.get(slug)?.map((entry) => entry.lang) ?? [] },
+	}));
+}
+
+interface Props {
+	post: Post;
+	available: Lang[];
+}
+
+const lang = toLang(Astro.currentLocale);
+const { post, available } = Astro.props;
+const t = LOCALES[lang];
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate } = post.data;
+---
+
+<Layout title={title} description={description} available={available}>
+	<div class="prose">
+		<article>
+			<h1>{title}</h1>
+
+			<p class="meta">
+				<time datetime={pubDate}>{formatDate(pubDate, lang)}</time>
+				{updatedDate && <span>{` · ${t.updated} ${formatDate(updatedDate, lang)}`}</span>}
+			</p>
+
+			<Content />
+		</article>
+
+		<p class="back"><a href={getRelativeLocaleUrl(lang, 'blog')}>{t.allPosts}</a></p>
+	</div>
+</Layout>
+
+<style>
+	.meta {
+		font-size: 0.875rem;
+		color: var(--muted);
+		margin-top: -0.75rem;
+		margin-bottom: calc(var(--space) * 2);
+	}
+
+	.back {
+		margin-top: calc(var(--space) * 3);
+	}
+</style>

@@ -1,0 +1,68 @@
+---
+import { LANGUAGES, LOCALES, toLang, type Lang } from '../utils/i18n';
+import { localeHref } from '../utils/routing';
+
+interface Props {
+	available: readonly Lang[];
+}
+
+const current = toLang(Astro.currentLocale);
+const { available } = Astro.props;
+---
+
+<nav class="langs" aria-label="Language">
+	<ul class="plain-list">
+		{
+			LANGUAGES.map((lang) => (
+				<li>
+					{lang === current ? (
+						<span class="current" aria-current="true">{LOCALES[lang].name}</span>
+					) : available.includes(lang) ? (
+						<a href={localeHref(Astro.url, current, lang)} hreflang={lang}>
+							{LOCALES[lang].name}
+						</a>
+					) : (
+						<span class="missing">
+							{LOCALES[lang].name}
+							<span class="visually-hidden"> ({LOCALES[current].notAvailable})</span>
+						</span>
+					)}
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	.langs {
+		font-size: 0.85rem;
+	}
+
+	ul {
+		display: flex;
+		gap: 0.5rem;
+		align-items: baseline;
+	}
+
+	li + li::before {
+		content: '·';
+		margin-right: 0.5rem;
+		color: var(--muted);
+	}
+
+	a,
+	.current,
+	.missing {
+		display: inline-block;
+		padding-block: 0.3rem;
+	}
+
+	.current {
+		font-weight: 600;
+	}
+
+	.missing {
+		color: var(--muted);
+		text-decoration: line-through;
+	}
+</style>

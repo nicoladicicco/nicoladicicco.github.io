@@ -1,0 +1,75 @@
+---
+import Moon from '../assets/icons/moon.svg';
+import Sun from '../assets/icons/sun.svg';
+
+interface Props {
+	label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<button data-theme-toggle type="button" aria-pressed="false" title={label}>
+	<span class="visually-hidden">{label}</span>
+	<Sun class="sun" width={18} height={18} aria-hidden="true" />
+	<Moon class="moon" width={18} height={18} aria-hidden="true" />
+</button>
+
+<script>
+	import { THEME_KEY, THEMES } from '../utils/theme';
+
+	const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+
+	const isDark = () => {
+		const theme = document.documentElement.dataset.theme;
+		return theme && THEMES.includes(theme)
+			? theme === 'dark'
+			: matchMedia('(prefers-color-scheme: dark)').matches;
+	};
+
+	const sync = () => {
+		for (const button of buttons) button.setAttribute('aria-pressed', String(isDark()));
+	};
+
+	for (const button of buttons) {
+		button.addEventListener('click', () => {
+			const next = isDark() ? 'light' : 'dark';
+			document.documentElement.dataset.theme = next;
+			localStorage.setItem(THEME_KEY, next);
+			sync();
+		});
+	}
+
+	sync();
+</script>
+
+<style>
+	button {
+		display: grid;
+		place-items: center;
+		padding: 0.35rem;
+		border: 1px solid transparent;
+		border-radius: 6px;
+		background: none;
+		color: var(--muted);
+		cursor: pointer;
+
+		&:hover {
+			color: var(--text);
+			border-color: var(--border);
+		}
+	}
+
+	svg {
+		grid-area: 1 / 1;
+	}
+
+	.sun {
+		fill: light-dark(currentColor, transparent);
+		stroke: light-dark(currentColor, transparent);
+	}
+
+	.moon {
+		fill: light-dark(transparent, currentColor);
+	}
+</style>
