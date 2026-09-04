@@ -10,7 +10,7 @@ let cached: Promise<BlogEntry[]> | undefined;
 export const getPosts = () => (cached ??= load());
 
 async function load(): Promise<BlogEntry[]> {
-	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const posts = await getCollection('blog');
 
 	return posts
 		.toSorted((a, b) => Temporal.PlainDate.compare(b.data.pubDate, a.data.pubDate))
