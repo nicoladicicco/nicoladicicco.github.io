@@ -1,0 +1,75 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import { LOCALES, toLang, type Lang } from '../utils/i18n';
+import { localeSubpath } from '../utils/routing';
+
+interface Props {
+	available: readonly Lang[];
+}
+
+const lang = toLang(Astro.currentLocale);
+const { available } = Astro.props;
+const t = LOCALES[lang];
+
+const links = [
+	{ section: '', href: getRelativeLocaleUrl(lang), label: t.home },
+	{ section: 'blog', href: getRelativeLocaleUrl(lang, 'blog'), label: t.blog },
+];
+
+const section = localeSubpath(Astro.url, lang).split('/')[0];
+---
+
+<nav class="container" aria-label="Main">
+	<ul class="plain-list">
+		{
+			links.map((link) => (
+				<li>
+					<a href={link.href} aria-current={link.section === section ? 'page' : undefined}>
+						{link.label}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+	<div class="tools">
+		<LanguageToggle available={available} />
+		<ThemeToggle label={t.toggleDarkMode} />
+	</div>
+</nav>
+
+<style>
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space);
+		margin-bottom: calc(var(--space) * 2.5);
+	}
+
+	ul {
+		display: flex;
+		gap: var(--space);
+	}
+
+	.tools {
+		display: flex;
+		align-items: center;
+		gap: var(--space);
+	}
+
+	a {
+		color: var(--muted);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--text);
+		}
+
+		&[aria-current='page'] {
+			color: var(--text);
+			font-weight: 600;
+		}
+	}
+</style>

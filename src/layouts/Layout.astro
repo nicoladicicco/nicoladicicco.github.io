@@ -1,0 +1,54 @@
+---
+import { Font } from 'astro:assets';
+import Nav from '../components/Nav.astro';
+import { DEFAULT_LANG, LANGUAGES, LOCALES, SITE_NAME, toLang, type Lang } from '../utils/i18n';
+import { localeHref } from '../utils/routing';
+import { THEME_KEY, THEMES } from '../utils/theme';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	available?: readonly Lang[];
+}
+
+const lang = toLang(Astro.currentLocale);
+
+const { title, available = LANGUAGES, description = LOCALES[lang].siteDescription } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const alternates = available.map((to) => ({
+	hreflang: to,
+	href: new URL(localeHref(Astro.url, lang, to), Astro.site).href,
+}));
+
+const xDefault = alternates.find(({ hreflang }) => hreflang === DEFAULT_LANG)?.href;
+---
+
+<!doctype html>
+<html lang={LOCALES[lang].tag}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<Font cssVariable="--font-literata" preload={[{ style: 'normal' }]} />
+		<title>{title ? `${title} — ${SITE_NAME}` : SITE_NAME}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		{alternates.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
+		{xDefault && <link rel="alternate" hreflang="x-default" href={xDefault} />}
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<script define:vars={{ THEME_KEY, THEMES }}>
+			const saved = localStorage.getItem(THEME_KEY);
+			if (THEMES.includes(saved)) document.documentElement.dataset.theme = saved;
+		</script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">{LOCALES[lang].skipToContent}</a>
+		<Nav available={available} />
+		<main id="main" class="container">
+			<slot />
+		</main>
+	</body>
+</html>

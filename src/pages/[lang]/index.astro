@@ -1,0 +1,147 @@
+---
+import { getImage } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { SITE_NAME, localeStaticPaths, toLang } from '../../utils/i18n';
+import { LINKS } from '../../utils/links';
+import portraitPhoto from '../../assets/nicola-portrait.jpeg';
+import squarePhoto from '../../assets/nicola-square.jpeg';
+
+export const getStaticPaths = localeStaticPaths;
+
+const lang = toLang(Astro.currentLocale);
+
+const about = await getEntry('about', lang);
+if (!about) throw new Error(`Missing src/content/about/${lang}.md`);
+
+const { Content } = await render(about);
+const { role } = about.data;
+
+const [firstName, ...lastName] = SITE_NAME.split(' ');
+
+const PORTRAIT = { width: 840, height: 1050, widths: [280, 560, 840] };
+const SQUARE = { width: 1080, height: 1080, widths: [360, 720, 1080] };
+
+const [portrait, square] = await Promise.all([
+	getImage({ src: portraitPhoto, ...PORTRAIT }),
+	getImage({ src: squarePhoto, ...SQUARE }),
+]);
+---
+
+<Layout description={`${SITE_NAME} — ${role}`}>
+	<header>
+		<h1><strong>{firstName}</strong> {lastName.join(' ')}</h1>
+		<p class="role">{role}</p>
+	</header>
+
+	<div class="split">
+		<div class="prose">
+			<Content />
+		</div>
+
+		<aside>
+			<picture>
+				<source
+					media="(width <= 46rem)"
+					srcset={square.srcSet.attribute}
+					sizes="calc(100vw - 2rem)"
+					width={SQUARE.width}
+					height={SQUARE.height}
+				/>
+				<img
+					class="portrait"
+					src={portrait.src}
+					srcset={portrait.srcSet.attribute}
+					sizes="280px"
+					width={PORTRAIT.width}
+					height={PORTRAIT.height}
+					alt={`Portrait of ${SITE_NAME}`}
+					loading="eager"
+					decoding="async"
+				/>
+			</picture>
+
+			<ul class="elsewhere plain-list">
+				{
+					LINKS.map(({ label, url, icon: Icon }) => (
+						<li>
+							<a href={url} title={label}>
+								<Icon height={22} aria-hidden="true" />
+								<span class="visually-hidden">{label}</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</aside>
+	</div>
+</Layout>
+
+<style>
+	header {
+		margin-bottom: calc(var(--space) * 2);
+	}
+
+	h1 {
+		font-weight: 400;
+		margin-bottom: 0.25rem;
+
+		& strong {
+			font-weight: 700;
+		}
+	}
+
+	.role {
+		font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+		font-weight: 600;
+		margin: 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 280px;
+		gap: calc(var(--space) * 2.5);
+		align-items: start;
+	}
+
+	.portrait {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 8px;
+	}
+
+	.elsewhere {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.25rem;
+		margin-top: var(--space);
+
+		& a {
+			display: grid;
+			place-items: center;
+			inline-size: 2.5rem;
+			block-size: 2.5rem;
+			border-radius: 6px;
+			color: var(--muted);
+			text-decoration: none;
+		}
+
+		& a:hover {
+			color: var(--text);
+			background: var(--surface);
+		}
+	}
+
+	@media (width <= 46rem) {
+		.split {
+			grid-template-columns: minmax(0, 1fr);
+			gap: calc(var(--space) * 1.5);
+		}
+
+		aside {
+			order: -1;
+		}
+	}
+</style>
